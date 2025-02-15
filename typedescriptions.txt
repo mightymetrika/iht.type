@@ -1,0 +1,73 @@
+[Keck, C., Mayer, A., & Rosseel, Y. (2024). Informative hypothesis testing in the EffectLiteR framework: A tutorial. Quantitative and Computational Methods in Behavioral Sciences, 4, Article e13059. https://doi.org/10.5964/qcmb.13059]
+
+In IHT, a distinction is often made between two types of hypotheses, which are called
+Type A and Type B hypotheses. The null and alternative hypotheses in our example are
+Type A hypotheses, which are usually of main interest. When testing Type A hypotheses,
+H0A (see Equation 14) states that all restrictions are equality restrictions, whereas the
+alternative hypothesis H1A (see Equation 15) states that at least one inequality restriction
+is strictly true. Here, the researcher would typically like to obtain a significant result, as
+this indicates that at least some of the constraints are not equality constraints and thus
+must be inequality constraints. In contrast, the Type B null hypothesis H0B
+ states that
+all inequality restrictions hold, whereas the Type B alternative hypothesis H1B
+ states that
+at least one inequality restriction is violated. When testing Type B hypotheses, the researcher would typically like to obtain a non significant result, because that would imply
+that we cannot reject the null hypothesis (and thus the expectations of the researcher)
+based on the data.
+If the researcher observes that the expected constraints are satisfied in the data,
+testing Type A hypotheses suffices. However, if one or more of the assumed constraints
+are violated in the data, but only to a very small extent, which might be due to sampling
+variability, the researcher should conduct a Type B hypothesis test before conducting a
+Type A hypothesis test and correct for multiple testing. We recommend to pre-register
+this approach.
+In our example, Type B hypotheses should be tested if at least one of the two
+constraints, either AdjM2 > AdjM1
+ or AdjM1 > AdjM0
+, is violated to a small extent in
+the data. For example, instead of obtaining the estimates that satisfy the constraints
+(AdjM0 = 0.044, AdjM1 = 0.475 and AdjM2 = 0.643, see Table 7), suppose we would
+obtain AdjM2 = 0.470, meaning that the constraint AdjM2 > AdjM1
+ would be violated
+to a very small extent. In that case, the researcher should start with testing the Type B
+hypotheses:
+H0B
+:AdjM2 > AdjM1
+,  AdjM1 > AdjM0
+, (16)
+and
+H1B
+:AdjM2 ≯ AdjM1
+,  AdjM1 ≯ AdjM0
+. (17)
+In case the detected violation of a constraint is small, hypothesis test Type B might still
+be non significant, in which case the researcher can proceed to test hypothesis test Type
+A. If hypothesis test Type B is significant, then it is clear that the data is contradicting
+the hypothesis. Therefore, there is no need for testing hypothesis test Type A.
+The following syntax illustrates how we can test this Type B hypothesis for our
+running example:
+
+allows us to proceed and test the Type A hypothesis. Lastly, note that testing a Type B
+hypothesis before testing a Type A hypothesis rarely seems to alter the conclusions, as
+can be seen from the simulations conducted by Kuiper et al. (2015).
+
+
+[Vanbrabant and Rosseel (2020) <doi:10.4324/9780429273872-14>]
+
+Evaluating an informative hypothesis requires two hypothesis tests, which are
+in the statistical literature often called hypothesis test Type A and hypothesis test Type
+B. Under the null hypothesis test of hypothesis test Type A, only the parameters
+(e.g., means or regression coefficients) that are involved in the order-constrained
+hypothesis are constrained to be equal (e.g., HA0 : 1 ¼ 2 ¼ 3 ¼ 4) and it is
+tested against the order-constrained hypothesis (e.g., HA1 : 15 25 35 4).
+For hypothesis test Type B, the null hypothesis states that all restrictions hold in
+the population (e.g., HB0 : 15 25 35 4) and it is tested against the hypothesis where no constraints are imposed on the parameters (e.g., HB1: at least one
+restriction is violated), although some equality constraints (if present) may be preserved under the alternative unconstrained hypothesis. Rejecting the null hypothesis would mean that at least one order constraint is violated. To find evidence in
+favor of an order-constrained hypothesis, a combination of hypothesis test Type
+B and hypothesis test Type A (in this order) is used. The rationale is that if
+hypothesis test Type B is not significant, we do not reject the null hypothesis that
+all restrictions hold in the population. However, hypothesis test Type B cannot
+make a distinction between inequality and equality constraints. Therefore, if
+hypothesis test Type B is not significant, the next step is to evaluate hypothesis
+test Type A. If we reject HA0 we can conclude that at least one inequality constraint is strictly true. Then, if we combine the evidence of hypothesis test Type
+B and hypothesis Type A, we can say that we have found indirect evidence in
+favor of (or against) the order-constrained hypothesis.
